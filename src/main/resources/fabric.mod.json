@@ -1,27 +1,27 @@
 {
   "schemaVersion": 1,
-  "id": "tooltipfix",
-  "version": "1.1.1-1.21",
-  "name": "ToolTip Fix",
-  "description": "Fixes ToolTips from running off the screen",
+  "id": "neotooltipfix",
+  "version": "${version}",
+  "name": "NeoToolTipFix",
+  "description": "Fixes ToolTips from running off the screen, fork of tooltipfix.",
   "authors": [
-    "kyrptonaught"
+	"ngspace",
+    "kyrptonaught (previous maintainer)"
   ],
   "contact": {
-    "homepage": "https://www.curseforge.com/minecraft/mc-mods/tooltipfix",
-    "sources": "https://github.com/kyrptonaught/tooltipfix"
+    "homepage": "https://github.com/ngspace/neotooltipfix",
+    "sources": "https://github.com/ngspace/neotooltipfix"
   },
   "license": "MIT",
   "icon": "assets/tooltipfix/icon.png",
   "environment": "client",
   "mixins": [
     {
-      "config": "tooltipfix.mixins.json",
+      "config": "neotooltipfix.mixins.json",
       "environment": "client"
     }
   ],
   "depends": {
-    "fabricloader": ">=0.15.11",
-    "fabric": "*"
+    "fabricloader": "*"
   }
 }
