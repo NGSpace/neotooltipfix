@@ -15,7 +15,7 @@ import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.tooltip.ClientTooltipComponent;
 import net.minecraft.client.gui.screens.inventory.tooltip.ClientTooltipPositioner;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 
 @Mixin(GuiGraphics.class)
 public abstract class FixToolTipMixin {
@@ -29,7 +29,7 @@ public abstract class FixToolTipMixin {
     }
 
     @Inject(method = "renderTooltip", at = @At(value = "HEAD"))
-    public void fix(Font textRenderer, List<ClientTooltipComponent> components, int x, int y, ClientTooltipPositioner positioner, ResourceLocation id, CallbackInfo ci) {
+    public void fix(Font textRenderer, List<ClientTooltipComponent> components, int x, int y, ClientTooltipPositioner positioner, Identifier id, CallbackInfo ci) {
         Helper.newFix(components, textRenderer, x, guiWidth());
     }
 
