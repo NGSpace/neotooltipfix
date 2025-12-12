@@ -20,8 +20,5 @@
       "config": "neotooltipfix.mixins.json",
       "environment": "client"
     }
-  ],
-  "depends": {
-    "fabricloader": "*"
-  }
+  ]
 }
