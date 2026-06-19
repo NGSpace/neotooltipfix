@@ -10,6 +10,8 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 
 public class Helper {
+    private Helper() {}
+
 
     private static boolean shouldFlip = false;
 
