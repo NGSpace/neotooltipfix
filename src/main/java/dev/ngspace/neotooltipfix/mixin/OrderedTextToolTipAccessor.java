@@ -8,8 +8,8 @@ import net.minecraft.util.FormattedCharSequence;
 
 @Mixin(ClientTextTooltip.class)
 public interface OrderedTextToolTipAccessor {
-
-    @Accessor("text")
-    FormattedCharSequence getText();
-
+	
+	@Accessor("text")
+	FormattedCharSequence getText();
+	
 }

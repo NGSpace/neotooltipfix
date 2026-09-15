@@ -1,6 +1,5 @@
 package dev.ngspace.neotooltipfix.mixin;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,22 +19,23 @@ import net.minecraft.resources.Identifier;
 
 @Mixin(GuiGraphicsExtractor.class)
 public abstract class FixToolTipMixin {
-
-    @Shadow
-    public abstract int guiWidth();
-
-    @ModifyVariable(method = "tooltip", at = @At(value = "HEAD"), index = 2, argsOnly = true)
-    public List<ClientTooltipComponent> makeListMutable(List<ClientTooltipComponent> value) {
-        return new ArrayList<>(value);
-    }
-
-    @Inject(method = "tooltip", at = @At(value = "HEAD"))
-    public void fix(Font textRenderer, List<ClientTooltipComponent> components, int x, int y, ClientTooltipPositioner positioner, Identifier id, CallbackInfo ci) {
-        Helper.newFix(components, textRenderer, x, guiWidth());
-    }
-
-    @ModifyVariable(method = "tooltip", at = @At(value = "INVOKE", target = "Lorg/joml/Matrix3x2fStack;pushMatrix()Lorg/joml/Matrix3x2fStack;"), index = 12)
-    public int modifyRenderX(int value, Font textRenderer, List<ClientTooltipComponent> components, int x) {
-        return Helper.shouldFlip(components, textRenderer, x);
-    }
+	
+	@Shadow
+	public abstract int guiWidth();
+	
+	@ModifyVariable(method = "tooltip", at = @At(value = "HEAD"), index = 2, argsOnly = true)
+	public List<ClientTooltipComponent> makeListMutable(List<ClientTooltipComponent> value) {
+		return new ArrayList<>(value);
+	}
+	
+	@Inject(method = "tooltip", at = @At(value = "HEAD"))
+	public void fix(Font textRenderer, List<ClientTooltipComponent> components, int x, int y,
+			ClientTooltipPositioner positioner, Identifier style, boolean extraSpaceAfterFirstLine, CallbackInfo ci) {
+		Helper.newFix(components, textRenderer, x, guiWidth());
+	}
+	
+	@ModifyVariable(method = "tooltip", at = @At(value = "INVOKE", target = "Lorg/joml/Matrix3x2fStack;pushMatrix()Lorg/joml/Matrix3x2fStack;"), index = 13)
+	public int modifyRenderX(int value, Font textRenderer, List<ClientTooltipComponent> components, int x) {
+		return Helper.shouldFlip(components, textRenderer, x);
+	}
 }
